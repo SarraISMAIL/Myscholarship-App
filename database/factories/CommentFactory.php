@@ -22,7 +22,9 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'comment' => $this -> faker ->text(255),
+            'question_id' => \App\Models\Models\Question::all()->random()->id,
+            'created_by' => \App\User::all()->random()->id
         ];
     }
 }

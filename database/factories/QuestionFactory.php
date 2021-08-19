@@ -22,7 +22,9 @@ class QuestionFactory extends Factory
     public function definition()
     {
         return [
-            //
+
+            'question' =>$this -> faker ->text(255),
+            'created_by' => \App\User::all()->random()->id
         ];
     }
 }
