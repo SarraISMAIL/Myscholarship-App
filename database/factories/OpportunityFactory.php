@@ -2,9 +2,12 @@
 
 namespace Database\Factories\Models\Models;
 
+
+use App\Models\Models\Opportunity;
 use App\Models\Models\Lookups\Category;
 use App\Models\Models\Lookups\Country;
-use App\Models\Models\Models\Opportunity;
+//use App\Models\Models\Models\Opportunity;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OpportunityFactory extends Factory
@@ -24,13 +27,13 @@ class OpportunityFactory extends Factory
     public function definition()
     {
         return [
-            'title'=> $this -> faker ->sentence(50, true),
+            'title'=> $this -> faker ->sentence(10, true),
             'description'=> $this -> faker ->text(200),
             'category_id'=> Category::all()->random()->id,
             'country_id'=>Country::all()->random()->id,
             'deadline'=> $this -> faker->dateTime(),
-            'organizer'=>$this -> faker->company
-
+            'organizer'=>$this -> faker->company,
+            'created_by'=>User::all()->random()->id
 
         ];
     }

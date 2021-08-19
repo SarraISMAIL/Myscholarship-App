@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OpportunityDetail extends Model
 {
-    use HasFactory;
+   public function opportunity($opportunity){
+       return $this ->belongsTo(Opportunity::class);
+   }
 }

@@ -22,15 +22,13 @@ class OpportunityDetailFactory extends Factory
     public function definition()
     {
         return [
-           'benefits'=>$this -> faker->text(600),
+           'benefits'=>$this->faker->text(600),
            'application_process'=>$this->faker->text(300),
             'further_queries'=>$this->faker->text(300),
             'eligibilities'=>$this->faker->text(300),
             'start_date'=>$this->faker->dateTime(),
             'end_date'=>$this->faker->dateTime(),
-            'official_link'=>$this->faker->url(),
-
-
+            'official_link'=>$this->faker->url()
 
 
         ];
