@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Models\Comment;
 use App\Models\Models\OpportunityDetail;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -20,7 +21,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CountrySeeder::class);
         $this->call(UserSeeder::class);
       $this->call(OpportunitySeeder::class);
-       // $this->call(OpportunityDetailSeeder::class);
+
+        $this->call(CommentSeeder::class);
+        $this->call(QuestionSeeder::class);
 
 
 
