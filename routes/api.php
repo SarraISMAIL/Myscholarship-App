@@ -48,6 +48,6 @@ Route::group(['middleware' => 'auth:api'], function (){
     Route::post('favorite','FavoriteController@store');
     Route::put('favorite/{favorite}','FavoriteController@update');
 
-    // ToDo: Upload Images for Opportunities and Forum
+    //mzeli: Upload Images for Opportunities and Forum
 });
 
