@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth:api'], function (){
 
     //Opportunities
     Route::resource('opportunity','OpportunityController');
+ //  Route::resource('opportunity/{opportunity}','OpportunityController@show');
 
     // Questions
     Route::get('questions','QuestionController@index');

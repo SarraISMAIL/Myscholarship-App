@@ -14,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return new CategoryCollection(Category::all());
     }
 
     /**
@@ -22,20 +22,31 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+/**
     public function create()
     {
         //
     }
-
+*/
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store (Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255'
+        ]);
+
+        if($validator->fails()){
+            return response(['errors' => $validator->errors()], 422);
+        }
+
+        return Category::create($request->all());
     }
 
     /**
@@ -46,7 +57,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return $category;
+
     }
 
     /**
@@ -55,10 +67,11 @@ class CategoryController extends Controller
      * @param  \App\Models\Models\Lookups\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    /**
+     * public function edit(Category $category)
     {
         //
-    }
+    }*/
 
     /**
      * Update the specified resource in storage.
@@ -69,9 +82,23 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255'
+        ]);
+
+        if($validator->fails()){
+            return response(['errors' => $validator->errors()], 422);
+        }
+
+        $category->update($request->all());
+
+        return $category;
     }
 
+
+        public function test(){
+        return "test good";
+}
     /**
      * Remove the specified resource from storage.
      *
@@ -80,6 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        /// $category->delete();
+        // return "Category is successfully delete";
     }
 }
