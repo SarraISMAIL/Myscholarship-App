@@ -14,7 +14,7 @@ class OpportunityController extends Controller
      */
     public function index()
     {
-        //
+       return new Opportunitycollection(Opportunity::paginate(10));
     }
 
     /**

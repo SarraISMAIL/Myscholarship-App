@@ -66,6 +66,7 @@ class AuthController extends Controller
     public function user(Request $request){
         return $request->user();
     }
+
      //don't repeat ur self that s why the best way is to create the getresponse method
     private function getResponse(User $user){
 
