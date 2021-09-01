@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -27,5 +28,14 @@ class AuthController extends Controller
             return response(['errors'=> $validator->errors()],422);
         }
 
-}
+        $user = new User();
+        $user ->first_name = $request->firstName;
+       $user ->last_name = $request->lastName;
+       $user ->email = $request->email;
+       $user ->password = bcrypt($request->password);
+       $user ->save();
+
+
+
+   }
 }
