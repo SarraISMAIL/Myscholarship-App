@@ -38,12 +38,32 @@ class AuthController extends Controller
     }
 
 ///login logout
-///
-///
+    public function login(Request $request){
+
+        $validator = Validator::make($request->all(),[
+            'email' => 'required|string|email|max:255',
+            'password' => 'required|string|max:255'
+        ]);
+
+            if($validator->fails()){
+            return response(['errors' => $validator->errors()], 422);
+        }
+
+        $credentials = \request(['email', 'password']);
+
+            if(Auth::attempt($credentials)){
+            $user = $request->user();
+            return  $this->getResponse($user);
+        }
+
+    }
+
+
+
     public function user(Request $request){
         return $request->user();
     }
-
+     //don't repeat ur self that s why the best way is to create the getresponse method
     private function getResponse(User $user){
 
         $tokenResult =   $user->createToken("Personal Access Token");
