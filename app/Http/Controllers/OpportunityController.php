@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Opportunity as OpportunityResource;
 use App\Models\Models\Opportunity;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,18 @@ class OpportunityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $opportunity = Opportunity::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'category_id' => $request->categoryId,
+            'country_id' => $request->countryId,
+            'deadline' => $request->deadline,
+            'organizer' => $request->organizer,
+            'created_by' => $request->createdBy
+        ]);
+        return new OpportunityResource ($opportunity);
+
     }
 
     /**
